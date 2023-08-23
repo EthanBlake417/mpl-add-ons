@@ -1,5 +1,3 @@
-
-
 def save_report_example_usage():
     import numpy as np
     from matplotlib import pyplot as plt
