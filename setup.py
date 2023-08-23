@@ -12,5 +12,5 @@ setup(
     long_description_content_type='text/markdown',
     description="Helper functions to make using matplotlib easier, more efficient and streamlined",
     packages=find_packages(),
-    install_requires=['matplotlib', 'PyQt5', 'ttkbootstrap']
+    install_requires=['matplotlib', 'PyQt5', 'ttkbootstrap', 'Pillow', 'pywin32']
 )
