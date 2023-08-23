@@ -10,7 +10,7 @@ setup(
     author="Ethan Blake",
     long_description=long_description,
     long_description_content_type='text/markdown',
-    description="helper functions to make using matplotlib easier, more efficient and streamlined",
+    description="Helper functions to make using matplotlib easier, more efficient and streamlined",
     packages=find_packages(),
     install_requires=['matplotlib', 'PyQt5', 'ttkbootstrap']
 )
