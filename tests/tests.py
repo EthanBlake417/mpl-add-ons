@@ -96,7 +96,8 @@ def close_plot_when_complete_example():
     plt.show()
 
 
-def annotation_example():
+def annotation_and_copy_axis_to_clipboard_example():
+    from matplotlib_add_ons.copy_axis_to_clipboard import copy_axis_to_clipboard
     import numpy as np
     import matplotlib.pyplot as plt
     from matplotlib.animation import FuncAnimation
@@ -127,6 +128,9 @@ def annotation_example():
     # if you want to put the annotations from a dictionary form:
     put_annotations(annotations, list_of_annotators)
 
+    # Copy axis to clipboard setup
+    copy_axis_to_clipboard([fig])
+
     plt.show()
 
 
@@ -134,4 +138,4 @@ if __name__ == '__main__':
     # save_report_example_usage()
     # twinx_hover_example_usage()
     # close_plot_when_complete_example()
-    annotation_example()
+    annotation_and_copy_axis_to_clipboard_example()
