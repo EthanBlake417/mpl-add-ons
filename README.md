@@ -1,5 +1,8 @@
 # Matplotlib Helper Functions
 
+##### GitHub: https://github.com/EthanBlake417/mpl-add-ons
+
+
 ### Save Report Widget:
     import numpy as np
     from matplotlib import pyplot as plt
@@ -98,8 +101,13 @@
         plt.show()
 
 
-### Annotations:
-    def annotation_example():
+### Annotations And Copy Axis to Clipboard:
+Note: Annotations are created by double click, and moved with Ctrl Click 
+
+Note2: Copy axis to Clipboard happens on right click.
+
+    def annotation_and_copy_axis_to_clipboard_example():
+        from matplotlib_add_ons.copy_axis_to_clipboard import copy_axis_to_clipboard
         import numpy as np
         import matplotlib.pyplot as plt
         from matplotlib.animation import FuncAnimation
@@ -120,7 +128,7 @@
     
         # Add the annotator
         list_of_annotators = annotator([fig])
-
+    
         # Some other functions you might need... (most likely implemented in another section of the code)
         # If you clear the axes or redraw them
         redraw_annotations(list_of_annotators)
@@ -129,5 +137,8 @@
         annotations = get_annotations(list_of_annotators)
         # if you want to put the annotations from a dictionary form:
         put_annotations(annotations, list_of_annotators)
+    
+        # Copy axis to clipboard setup
+        copy_axis_to_clipboard([fig])
     
         plt.show()
