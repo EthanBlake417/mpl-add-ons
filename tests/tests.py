@@ -1,3 +1,5 @@
+
+
 def save_report_example_usage():
     import numpy as np
     from matplotlib import pyplot as plt
@@ -94,12 +96,13 @@ def close_plot_when_complete_example():
     plt.show()
 
 
-def annotation_and_copy_axis_to_clipboard_example():
+def annotation_and_copy_axis_to_clipboard_and_ask_close_example():
     from matplotlib_add_ons.copy_axis_to_clipboard import copy_axis_to_clipboard
     import numpy as np
     import matplotlib.pyplot as plt
     from matplotlib.animation import FuncAnimation
     from matplotlib_add_ons.annotations import annotator, redraw_annotations, get_annotations, put_annotations
+    from matplotlib_add_ons.ask_close import ask_close
 
     # Set up the figure and axis
     fig, ax = plt.subplots()
@@ -129,6 +132,9 @@ def annotation_and_copy_axis_to_clipboard_example():
     # Copy axis to clipboard setup
     copy_axis_to_clipboard([fig])
 
+    # Ask Close
+    ask_close([fig])
+
     plt.show()
 
 
@@ -136,4 +142,4 @@ if __name__ == '__main__':
     # save_report_example_usage()
     # twinx_hover_example_usage()
     # close_plot_when_complete_example()
-    annotation_and_copy_axis_to_clipboard_example()
+    annotation_and_copy_axis_to_clipboard_and_ask_close_example()
