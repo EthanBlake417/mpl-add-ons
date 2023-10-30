@@ -16,9 +16,9 @@ def annotate_graph(annotation_event, annotation_queue):
             root = tk.Tk()
             root.withdraw()  # Hide the main window
             if edit:
-                dialog = EditAnnotation("Input", initial_value=initial_value)
+                dialog = EditAnnotation(root, "Input", initial_value=initial_value)
             else:
-                dialog = CreateAnnotation("Input", initial_value=initial_value)
+                dialog = CreateAnnotation(root, "Input", initial_value=initial_value)
             note_text = dialog.result
             dialog_dict = {"value": note_text, "edit": edit}
             annotation_queue.put(dialog_dict)  # put data back into the queue
@@ -35,12 +35,12 @@ def annotator(figures):
     threading.Thread(target=annotate_graph, args=(annotation_event, annotation_queue,)).start()
     for fig in figures:
         annotator_object = Annotator(fig, annotation_event, annotation_queue)
-        list_of_annotators.append(annotator_object)  # do this to prevent garbage collection
         fig.canvas.mpl_connect("button_press_event", annotator_object.add_note)
         fig.canvas.mpl_connect("pick_event", annotator_object.on_pick)
         fig.canvas.mpl_connect("button_release_event", annotator_object.on_release)
         fig.canvas.mpl_connect("key_press_event", annotator_object.on_key_press)
         fig.canvas.mpl_connect("key_release_event", annotator_object.on_key_release)
+        list_of_annotators.append(annotator_object)  # do this to prevent garbage collection
     return list_of_annotators
 
 
@@ -70,8 +70,8 @@ def put_annotations(data: dict, list_of_annotators: list):
 class EditAnnotation:
     """ Helper Class for Annotator Class """
 
-    def __init__(self, parent, title=None, initial_value=""):
-        self.root = tkb.Toplevel(topmost=True)
+    def __init__(self, root, parent, title=None, initial_value=""):
+        self.root = tkb.Toplevel(master=root, topmost=True)
         self.initial_value = initial_value
         self.result = None
 
@@ -110,8 +110,8 @@ class EditAnnotation:
 class CreateAnnotation:
     """ Helper Class for Annotator Class """
 
-    def __init__(self, parent, title=None, initial_value=""):
-        self.root = tkb.Toplevel(topmost=True)
+    def __init__(self, root, parent, title=None, initial_value=""):
+        self.root = tkb.Toplevel(master=root, topmost=True)
         self.initial_value = initial_value
         self.result = None
 
