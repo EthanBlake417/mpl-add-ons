@@ -185,7 +185,7 @@ class Annotator:
 
             new_annotation.data_point = data_point
             new_annotation.set_picker(picker_value)
-
+            new_annotation.ax = new_axis
             # Add the new annotation to the new list
             self.annotations.append(new_annotation)
 
@@ -242,7 +242,7 @@ class Annotator:
             offset_text = annotation.get_position()
             picker_value = annotation.get_picker()
             data_point = annotation.data_point
-            axis = annotation.axes
+            axis = annotation.ax
             subplot_number = self.get_subplot_number(axis)
 
             # Remove the existing annotation
@@ -263,6 +263,7 @@ class Annotator:
 
             new_annotation.data_point = data_point
             new_annotation.set_picker(picker_value)
+            new_annotation.ax = new_axis
 
             # Add the new annotation to the new list
             new_annotations.append(new_annotation)
@@ -294,6 +295,7 @@ class Annotator:
                                                            xytext=(selected_x, selected_y), arrowprops=dict(facecolor='black', arrowstyle="->"))
                         annotation.set_picker(5)
                         annotation.data_point = (selected_x, selected_y)  # Save the original data point
+                        annotation.ax = event.inaxes
                         self.annotations.append(annotation)
                         plt.draw()
                     self.currently_open = False
@@ -337,6 +339,7 @@ class Annotator:
                                                  arrowprops=dict(facecolor='black', arrowstyle="->"))
                     new_annotation.set_picker(5)
                     new_annotation.data_point = self.selected_annotation.data_point
+                    new_annotation.ax = ax
                     self.annotations.append(new_annotation)
                     self.selected_annotation = None
                     plt.draw()
