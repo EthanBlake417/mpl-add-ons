@@ -14,3 +14,4 @@ setup(
     packages=find_packages(),
     install_requires=['matplotlib', 'PyQt5', 'ttkbootstrap', 'Pillow', 'pywin32']
 )
+
